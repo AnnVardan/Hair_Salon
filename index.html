@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LN Hair Salon | Luxury Haircare</title>
+    <meta name="description" content="Premium hair salon offering cuts, coloring, and styling in Luxe City. Book now!">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#booking">Book Now</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <video autoplay muted loop>
+            <source src="https://www.example.com/salon-video.mp4" type="video/mp4">
+        </video>
+        <div class="hero-text" data-aos="fade-up">
+            <h1>LN Hair Salon</h1>
+            <p>Where Beauty Meets Precision</p>
+            <button onclick="location.href='#booking'">Book Appointment</button>
+        </div>
+    </section>
+
+    <!-- Services Section with Images -->
+    <section id="services" data-aos="fade-up">
+        <h2>Our Services</h2>
+        <div class="service-items">
+            <div class="service-item">
+                <img src="https://www.example.com/haircut.jpg" alt="Haircut & Styling">
+                <h3>Haircuts & Styling</h3>
+                <p>Precision cuts and styling to suit your personality and lifestyle.</p>
+            </div>
+            <div class="service-item">
+                <img src="https://www.example.com/coloring.jpg" alt="Coloring & Highlights">
+                <h3>Coloring & Highlights</h3>
+                <p>Gorgeous color transformations and highlights for every occasion.</p>
+            </div>
+            <div class="service-item">
+                <img src="https://www.example.com/bridal.jpg" alt="Bridal & Event Styling">
+                <h3>Bridal & Event Styling</h3>
+                <p>Elegantly styled hair for weddings, proms, and special events.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section with Calendly -->
+    <section id="booking" data-aos="fade-up">
+        <h2>Book Your Appointment</h2>
+        <div class="calendly-inline-widget" data-url="https://calendly.com/your-salon" style="min-width:320px;height:630px;"></div>
+    </section>
+
+    <!-- Stripe Payment Button -->
+    <section id="payment" data-aos="fade-up">
+        <h2>Secure Your Spot</h2>
+        <button id="checkout-button" class="stripe-button">Pay Deposit ($20)</button>
+    </section>
+
+    <!-- Footer & Contact with Social Media Icons -->
+    <footer id="contact">
+        <p>📞 (555) 123-4567 | 📍 123 Beauty Lane, Luxe City</p>
+        <div class="social-icons">
+            <a href="#"><img src="https://www.example.com/instagram-icon.svg" alt="Instagram"></a>
+            <a href="#"><img src="https://www.example.com/facebook-icon.svg" alt="Facebook"></a>
+            <a href="#"><img src="https://www.example.com/twitter-icon.svg" alt="Twitter"></a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+    <script>
+        window.onload = function() {
+            // Initialize AOS animations
+            AOS.init({ duration: 1000 });
+
+            // Stripe Payment
+            const stripe = Stripe('YOUR_STRIPE_PUBLIC_KEY');
+            document.getElementById('checkout-button').addEventListener('click', () => {
+                stripe.redirectToCheckout({ sessionId: 'STRIPE_SESSION_ID' });
+            });
+        };
+    </script>
+</body>
+</html>
+
+<style>
+:root {
+    --primary: #F5E6E8;
+    --secondary: #2D2D2D;
+    --accent: #C4A484;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    color: var(--secondary);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    background: var(--primary);
+}
+
+nav li {
+    margin: 0 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--secondary);
+}
+
+.hero {
+    position: relative;
+    height: 100vh;
+}
+
+.hero video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+
+.stripe-button {
+    background: var(--accent);
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+}
+
+#services, #booking, #payment {
+    text-align: center;
+    padding: 50px 0;
+}
+
+#services .service-items {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+#services .service-item {
+    width: 250px;
+    text-align: center;
+}
+
+#services .service-item img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#services h3 {
+    margin-top: 10px;
+    font-size: 1.5rem;
+}
+
+#services p {
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+#services ul {
+    list-style: none;
+    padding: 0;
+}
+
+#services li {
+    margin: 10px 0;
+    font-size: 1.2rem;
+}
+</style>
