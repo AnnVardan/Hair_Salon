@@ -57,19 +57,6 @@
                 <p>Elegantly styled hair for weddings, proms, and special events.</p>
             </div>
         </div>
-    </section>
-
-    <!-- Booking Section with Calendly -->
-    <section id="booking" data-aos="fade-up">
-        <h2>Book Your Appointment</h2>
-        <div class="calendly-inline-widget" data-url="https://calendly.com/your-salon" style="min-width:320px;height:630px;"></div>
-    </section>
-
-    <!-- Stripe Payment Button -->
-    <section id="payment" data-aos="fade-up">
-        <h2>Secure Your Spot</h2>
-        <button id="checkout-button" class="stripe-button">Pay Deposit ($20)</button>
-    </section>
 
     <!-- Footer & Contact with Social Media Icons -->
     <footer id="contact">
@@ -83,18 +70,11 @@
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://js.stripe.com/v3/"></script>
-    <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-    <script>
-        window.onload = function() {
+          window.onload = function() {
             // Initialize AOS animations
             AOS.init({ duration: 1000 });
 
-            // Stripe Payment
-            const stripe = Stripe('YOUR_STRIPE_PUBLIC_KEY');
-            document.getElementById('checkout-button').addEventListener('click', () => {
-                stripe.redirectToCheckout({ sessionId: 'STRIPE_SESSION_ID' });
-            });
+                   });
         };
     </script>
 </body>
